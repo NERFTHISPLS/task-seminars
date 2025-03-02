@@ -12,6 +12,6 @@ export function generateDateTimeFromSeminar({
   return date.toISOString();
 }
 
-function stringToNumber(str: string): number {
+export function stringToNumber(str: string): number {
   return Number(str);
 }
