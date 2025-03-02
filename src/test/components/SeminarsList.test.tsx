@@ -4,7 +4,8 @@ import { render, screen } from '@testing-library/react';
 import * as useSeminars from '../../hooks/useSeminars';
 
 import SeminarsList from '../../components/SeminarsList/SeminarsList';
-import { Seminar } from '../../types';
+
+import type { Seminar } from '../../types';
 
 const useSeminarsSpy = jest.spyOn(useSeminars, 'useSeminars');
 
