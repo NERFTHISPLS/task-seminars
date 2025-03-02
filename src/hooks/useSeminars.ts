@@ -22,9 +22,7 @@ export function useSeminars(): SeminarsFetchState {
         const seminars = response.data;
 
         setSeminars(seminars);
-      } catch (err) {
-        console.error(err);
-
+      } catch {
         setError(FETCH_SEMINARS_ERROR_TEXT);
       } finally {
         setIsLoading(false);
