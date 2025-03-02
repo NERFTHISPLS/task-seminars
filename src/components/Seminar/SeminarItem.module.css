@@ -1,0 +1,50 @@
+.item {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.3rem;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.3rem;
+}
+
+.item img {
+  width: 10rem;
+  border-radius: 0.3rem;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info time {
+  margin-left: auto;
+  color: #797979;
+  font-size: 0.8rem;
+}
+
+.description {
+  flex: 1;
+}
+
+.description h2 {
+  margin-bottom: 0.4rem;
+}
+
+.description h2 a:link,
+.description h2 a:active {
+  color: #3f3f3f;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: all 0.1s ease-in;
+}
+
+.description h2 a:focus,
+.description h2 a:hover {
+  color: #5c5c5c;
+}
+
+.description p {
+  color: #707070;
+  font-size: 1rem;
+}
