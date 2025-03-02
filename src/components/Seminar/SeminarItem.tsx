@@ -1,4 +1,5 @@
 import { Seminar } from '../../types';
+import { generateDateTimeFromSeminar } from '../../utils/helpers';
 import styles from './SeminarItem.module.css';
 
 interface Props {
@@ -6,16 +7,7 @@ interface Props {
 }
 
 function SeminarItem({ seminar }: Props) {
-  const [day, month, year] = seminar.date
-    .split('.')
-    .map(partOfDate => Number(partOfDate));
-
-  const [hour, minutes] = seminar.time
-    .split(':')
-    .map(partOfTime => Number(partOfTime));
-
-  const date = new Date(year, month - 1, day, hour, minutes);
-  const dateTime = date.toISOString();
+  const dateTime = generateDateTimeFromSeminar(seminar);
   const formattedDate = `${seminar.date} ${seminar.time}`;
 
   return (
