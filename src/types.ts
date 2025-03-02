@@ -6,3 +6,9 @@ export interface Seminar {
   time: string;
   photo: string;
 }
+
+export interface SeminarsFetchState {
+  seminars: Seminar[];
+  isLoading: boolean;
+  error: string;
+}
