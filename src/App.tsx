@@ -1,5 +1,11 @@
+import SeminarsList from './components/SeminarsList/SeminarsList';
+
 function App() {
-  return <div>App</div>;
+  return (
+    <main>
+      <SeminarsList />
+    </main>
+  );
 }
 
 export default App;

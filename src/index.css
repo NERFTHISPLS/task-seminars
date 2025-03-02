@@ -9,3 +9,9 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+main {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
