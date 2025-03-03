@@ -12,3 +12,9 @@ export interface SeminarsFetchState {
   isLoading: boolean;
   error: string;
 }
+
+export enum ButtonType {
+  Neutral = 'neutral',
+  Danger = 'danger',
+  Success = 'success',
+}
