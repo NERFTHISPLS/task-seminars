@@ -1,0 +1,40 @@
+.neutral,
+.danger,
+.success {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.1s ease-in;
+}
+
+.neutral {
+  color: #383838;
+  background-color: #fafafa;
+  border: 1px solid #b9b9b9;
+}
+
+.neutral:hover {
+  background-color: #f5f5f5;
+}
+
+.danger {
+  color: #4d4d4d;
+  background-color: #ffc1c1;
+  border: 1px solid #f8b4b4;
+}
+
+.danger:hover {
+  background-color: #ffacac;
+}
+
+.success {
+  color: #3a3a3a;
+  background-color: #b0f39f;
+  border: 1px solid #88ce77;
+}
+
+.success:hover {
+  background-color: #a7eb96;
+}

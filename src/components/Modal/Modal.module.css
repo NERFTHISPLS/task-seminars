@@ -1,0 +1,42 @@
+.container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-height: 10rem;
+  background-color: #f8f8f8;
+  border: 1px solid #dfdfdf;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #313131;
+  z-index: 999;
+}
+
+.closeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.1rem 0.2rem;
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: #dfdfdf;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1); /* Черный фон с прозрачностью */
+}

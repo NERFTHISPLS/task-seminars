@@ -5,7 +5,7 @@ import { useSeminars } from '../../hooks/useSeminars';
 import SeminarItem from '../Seminar/SeminarItem';
 
 function SeminarsList() {
-  const { isLoading, error, seminars } = useSeminars();
+  const { isLoading, error, seminars, deleteSeminar } = useSeminars();
 
   if (isLoading) {
     return <div className={styles.loader}></div>;
@@ -22,7 +22,11 @@ function SeminarsList() {
   return (
     <ul className={styles.list}>
       {seminars.map(seminar => (
-        <SeminarItem key={seminar.id} seminar={seminar} />
+        <SeminarItem
+          key={seminar.id}
+          seminar={seminar}
+          onDeleteSemianar={() => deleteSeminar(seminar.id)}
+        />
       ))}
     </ul>
   );
