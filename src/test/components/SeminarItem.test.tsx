@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import SeminarItem from '../../components/Seminar/SeminarItem';
 
@@ -48,4 +48,24 @@ test('checks if time tag has correct datetime', () => {
   const timeElement = screen.getByText(date);
 
   expect(timeElement).toHaveAttribute('datetime', mockedDateTimeAttr);
+});
+
+test('delete button exists', () => {
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={() => {}} />);
+
+  const button = screen.getByText('Удалить');
+
+  expect(button).toBeInTheDocument();
+});
+
+test('fires event when delete button is clicked', () => {
+  const deleteMock = jest.fn();
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={deleteMock} />);
+
+  fireEvent.click(screen.getByText('Удалить'));
+
+  const submitButton = screen.getByText('Подтвердить');
+  fireEvent.click(submitButton);
+
+  expect(deleteMock).toHaveBeenCalledTimes(1);
 });
