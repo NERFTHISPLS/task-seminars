@@ -12,6 +12,7 @@ export interface SeminarsFetch {
   isLoading: boolean;
   error: string;
   deleteSeminar: (id: number) => void;
+  editSeminar: (seminar: Seminar) => void;
 }
 
 export enum ButtonType {

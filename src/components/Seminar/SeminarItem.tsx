@@ -5,13 +5,15 @@ import { generateDateTimeFromSeminar } from '../../utils/helpers';
 import styles from './SeminarItem.module.css';
 
 import SubmitDeleteSeminarModal from '../SubmitDeleteModal/SubmitDeleteSeminarModal';
+import EditSeminarModal from '../EditSeminarModal/EditSeminarModal';
 
 interface Props {
   seminar: Seminar;
   onDeleteSemianar: () => void;
+  onEditSeminar: (seminar: Seminar) => void;
 }
 
-function SeminarItem({ seminar, onDeleteSemianar }: Props) {
+function SeminarItem({ seminar, onDeleteSemianar, onEditSeminar }: Props) {
   const dateTime = generateDateTimeFromSeminar(seminar);
   const formattedDate = `${seminar.date} ${seminar.time}`;
 
@@ -30,7 +32,10 @@ function SeminarItem({ seminar, onDeleteSemianar }: Props) {
             <p>{seminar.description}</p>
           </div>
 
-          <SubmitDeleteSeminarModal onDeleteSeminar={onDeleteSemianar} />
+          <div className={styles.actions}>
+            <SubmitDeleteSeminarModal onDeleteSeminar={onDeleteSemianar} />
+            <EditSeminarModal seminar={seminar} onEditSeminar={onEditSeminar} />
+          </div>
         </div>
 
         <time dateTime={dateTime}>{formattedDate}</time>
