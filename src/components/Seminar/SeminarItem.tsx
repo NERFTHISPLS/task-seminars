@@ -10,7 +10,7 @@ import EditSeminarModal from '../EditSeminarModal/EditSeminarModal';
 interface Props {
   seminar: Seminar;
   onDeleteSemianar: () => void;
-  onEditSeminar: () => void;
+  onEditSeminar: (seminar: Seminar) => void;
 }
 
 function SeminarItem({ seminar, onDeleteSemianar, onEditSeminar }: Props) {
@@ -34,7 +34,7 @@ function SeminarItem({ seminar, onDeleteSemianar, onEditSeminar }: Props) {
 
           <div className={styles.actions}>
             <SubmitDeleteSeminarModal onDeleteSeminar={onDeleteSemianar} />
-            <EditSeminarModal onEditSeminar={onEditSeminar} />
+            <EditSeminarModal seminar={seminar} onEditSeminar={onEditSeminar} />
           </div>
         </div>
 

@@ -3,9 +3,11 @@ import styles from './SeminarsList.module.css';
 import { useSeminars } from '../../hooks/useSeminars';
 
 import SeminarItem from '../Seminar/SeminarItem';
+import { Seminar } from '../../types';
 
 function SeminarsList() {
-  const { isLoading, error, seminars, deleteSeminar } = useSeminars();
+  const { isLoading, error, seminars, deleteSeminar, editSeminar } =
+    useSeminars();
 
   if (isLoading) {
     return <div className={styles.loader}></div>;
@@ -26,6 +28,9 @@ function SeminarsList() {
           key={seminar.id}
           seminar={seminar}
           onDeleteSemianar={() => deleteSeminar(seminar.id)}
+          onEditSeminar={(updatedSeminar: Seminar) =>
+            editSeminar(updatedSeminar)
+          }
         />
       ))}
     </ul>

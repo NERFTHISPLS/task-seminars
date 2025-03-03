@@ -23,7 +23,8 @@ interface ModalControlProps {
 }
 
 interface SubmitButtonProps extends Props {
-  onSubmit?: (id?: number) => void;
+  disabled?: boolean;
+  onSubmit?: () => void;
 }
 
 interface ModalContext {
@@ -103,11 +104,11 @@ function CancelButton({ children }: Props) {
   );
 }
 
-function SubmitButton({ onSubmit = () => {}, children }: SubmitButtonProps) {
+function SubmitButton({ onSubmit, children }: SubmitButtonProps) {
   const { close } = useContext(ModalContext);
 
   function handleSubmit() {
-    onSubmit();
+    onSubmit?.();
     close();
   }
 
