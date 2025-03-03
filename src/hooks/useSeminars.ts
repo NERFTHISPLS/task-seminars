@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import {
+  DELETE_SEMINARS_ERROR_TEXT,
   FETCH_SEMINARS_ERROR_TEXT,
   SEMINARS_ENDPOINT,
 } from '../utils/constants';
@@ -42,7 +43,7 @@ export function useSeminars(): SeminarsFetch {
 
       setSeminars(filteredSeminars);
     } catch {
-      setError(FETCH_SEMINARS_ERROR_TEXT);
+      setError(DELETE_SEMINARS_ERROR_TEXT);
     } finally {
       setIsLoading(false);
     }
