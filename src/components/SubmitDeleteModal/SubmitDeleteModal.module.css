@@ -6,6 +6,11 @@
   border-bottom: 1px solid #acacac;
 }
 
+.content {
+  flex: 1;
+  padding: 0.3rem 0.6rem;
+}
+
 .footer {
   display: flex;
   justify-content: flex-end;

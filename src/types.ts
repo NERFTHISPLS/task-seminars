@@ -7,10 +7,11 @@ export interface Seminar {
   photo: string;
 }
 
-export interface SeminarsFetchState {
+export interface SeminarsFetch {
   seminars: Seminar[];
   isLoading: boolean;
   error: string;
+  deleteSeminar: (id: number) => void;
 }
 
 export enum ButtonType {

@@ -11,16 +11,22 @@
   border-radius: 0.3rem;
 }
 
-.info {
+.infoContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.info time {
+.infoContainer time {
   margin-left: auto;
   color: #797979;
   font-size: 0.8rem;
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
 }
 
 .description {

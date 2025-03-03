@@ -6,9 +6,9 @@ import {
   SEMINARS_ENDPOINT,
 } from '../utils/constants';
 
-import type { Seminar, SeminarsFetchState } from '../types';
+import type { Seminar, SeminarsFetch } from '../types';
 
-export function useSeminars(): SeminarsFetchState {
+export function useSeminars(): SeminarsFetch {
   const [seminars, setSeminars] = useState<Seminar[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -32,5 +32,21 @@ export function useSeminars(): SeminarsFetchState {
     loadSeminars();
   }, []);
 
-  return { seminars, isLoading, error };
+  async function deleteSeminar(id: number): Promise<void> {
+    setIsLoading(true);
+
+    try {
+      await axios.delete(`${SEMINARS_ENDPOINT}/${id}`);
+
+      const filteredSeminars = seminars.filter(seminar => seminar.id !== id);
+
+      setSeminars(filteredSeminars);
+    } catch {
+      setError(FETCH_SEMINARS_ERROR_TEXT);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return { seminars, isLoading, error, deleteSeminar };
 }

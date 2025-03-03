@@ -1,5 +1,12 @@
 import { createPortal } from 'react-dom';
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import {
+  cloneElement,
+  createContext,
+  ReactElement,
+  type ReactNode,
+  useContext,
+  useState,
+} from 'react';
 
 import styles from './Modal.module.css';
 
@@ -7,12 +14,16 @@ import Button from '../Button/Button';
 import { ButtonType } from '../../types';
 
 interface Props {
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode;
   className?: string;
 }
 
+interface ModalControlProps {
+  children: ReactElement<{ onClick?: () => void }>;
+}
+
 interface SubmitButtonProps extends Props {
-  onSubmit?: () => void;
+  onSubmit?: (id?: number) => void;
 }
 
 interface ModalContext {
@@ -28,20 +39,24 @@ const ModalContext = createContext<ModalContext>({
 });
 
 function Modal({ children }: Props) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const close = () => setIsOpen(false);
   const open = () => setIsOpen(true);
 
-  if (!isOpen) return null;
-
-  return createPortal(
+  return (
     <ModalContext.Provider value={{ isOpen, close, open }}>
-      <div className={styles.container}>{children}</div>
-      <div className={styles.overlay}></div>
-    </ModalContext.Provider>,
-    document.body
+      {children}
+    </ModalContext.Provider>
   );
+}
+
+function Control({ children }: ModalControlProps) {
+  const { open } = useContext(ModalContext);
+
+  return cloneElement(children, {
+    onClick: open,
+  });
 }
 
 function Header({ className = '', children }: Props) {
@@ -59,10 +74,16 @@ function Close({ className = '' }: Props) {
 }
 
 function Content({ className = '', children }: Props) {
-  return (
+  const { isOpen } = useContext(ModalContext);
+
+  if (!isOpen) return null;
+
+  return createPortal(
     <div className={`${styles.content} ${className}`}>
-      <div>{children}</div>
-    </div>
+      <div className={styles.container}>{children}</div>
+      <div className={styles.overlay}></div>
+    </div>,
+    document.body
   );
 }
 
@@ -97,6 +118,7 @@ function SubmitButton({ onSubmit = () => {}, children }: SubmitButtonProps) {
   );
 }
 
+Modal.Control = Control;
 Modal.Header = Header;
 Modal.Close = Close;
 Modal.Content = Content;
