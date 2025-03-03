@@ -14,7 +14,7 @@ interface Props {
 function Button({
   className = '',
   type = ButtonType.Neutral,
-  onClick,
+  onClick = () => {},
   children,
 }: Props) {
   const classes = `${styles[type]} ${className}`;

@@ -10,7 +10,12 @@ import type { Seminar } from '../../types';
 const useSeminarsSpy = jest.spyOn(useSeminars, 'useSeminars');
 
 test('shows loading indicator when fetching data', () => {
-  useSeminarsSpy.mockReturnValue({ isLoading: true, error: '', seminars: [] });
+  useSeminarsSpy.mockReturnValue({
+    isLoading: true,
+    error: '',
+    seminars: [],
+    deleteSeminar: () => {},
+  });
 
   const { container } = render(<SeminarsList />);
 
@@ -22,6 +27,7 @@ test('shows error when fetch failed', () => {
     isLoading: false,
     error: 'Error occurred',
     seminars: [],
+    deleteSeminar: () => {},
   });
 
   const { container } = render(<SeminarsList />);
@@ -31,7 +37,12 @@ test('shows error when fetch failed', () => {
 });
 
 test('shows message when seminars list is empty', () => {
-  useSeminarsSpy.mockReturnValue({ isLoading: false, error: '', seminars: [] });
+  useSeminarsSpy.mockReturnValue({
+    isLoading: false,
+    error: '',
+    seminars: [],
+    deleteSeminar: () => {},
+  });
 
   const { container } = render(<SeminarsList />);
 
@@ -62,6 +73,7 @@ test('shows seminars when loaded', () => {
     isLoading: false,
     error: '',
     seminars: seminarsMock,
+    deleteSeminar: () => {},
   });
 
   const { container } = render(<SeminarsList />);

@@ -22,14 +22,14 @@ jest.mock('../../utils/helpers.ts', () => ({
 }));
 
 test('shows title and desription', () => {
-  render(<SeminarItem seminar={seminarMock} />);
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={() => {}} />);
 
   expect(screen.getByText(seminarMock.title)).toBeInTheDocument();
   expect(screen.getByText(seminarMock.description)).toBeInTheDocument();
 });
 
 test('shows img with correct src and alt', () => {
-  render(<SeminarItem seminar={seminarMock} />);
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={() => {}} />);
   const img = screen.getByRole('img');
 
   expect(img).toHaveAttribute('src', seminarMock.photo);
@@ -37,13 +37,13 @@ test('shows img with correct src and alt', () => {
 });
 
 test('shows correct date and time', () => {
-  render(<SeminarItem seminar={seminarMock} />);
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={() => {}} />);
 
   expect(screen.getByText(date)).toBeInTheDocument();
 });
 
 test('checks if time tag has correct datetime', () => {
-  render(<SeminarItem seminar={seminarMock} />);
+  render(<SeminarItem seminar={seminarMock} onDeleteSemianar={() => {}} />);
 
   const timeElement = screen.getByText(date);
 
